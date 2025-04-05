@@ -1,20 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JWD5EZ268"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IC Hello Starter</title>
-</head>
+      gtag('config', 'G-6JWD5EZ268');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OdinFlow</title>
+    <meta name="description" content="实时查看 ODIN.FUN 的 ckBTC 存量资金，支持 Web3 和区块链技术。" />
+    <meta name="keywords" content="ODIN.FUN, ckBTC, 资金存量, Web3, 区块链, 加密货币" />
+    <meta name="author" content="YSYMS" />
+    <meta property="og:title" content="ODIN.FUN-存量资金监控" />
+    <meta property="og:description" content="实时查看 ODIN.FUN 的 ckBTC 存量资金，支持 Web3 和区块链技术。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ovv2h-qyaaa-aaaak-ae5zq-cai.icp0.io/" />
+    <meta property="og:image" content="https://ovv2h-qyaaa-aaaak-ae5zq-cai.icp0.io/LOGO.png" />
+    <base href="/" />
+    <link rel="icon" href="LOGO.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/index.scss" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="twitter-header">
+        <a href="https://x.com/AI_ccp251th" target="_blank" rel="noopener noreferrer" class="twitter-link" aria-label="Twitter官方账号">
+          <svg role="img" aria-hidden="true" focusable="false" width="48" height="48" viewBox="0 0 24 24" class="twitter-icon">
+            <defs>
+              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#7bff00c8;" />
+                <stop offset="100%" style="stop-color:#03ff6ccf;" />
+              </linearGradient>
+            </defs>
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="url(#logoGradient)"/>
+          </svg>
+        </a>
+      </header>
+      <main>
+        <section class="history-section">
+          <div class="balance-header">
+            <h2>ODIN.FUN存量资金：<span id="current-balance">加载中...</span> <span id="symbol">BTC</span></h2>
+            <div class="period-dropdown">
+              <select id="period-select">
+                <option value="daily" selected>24小时</option>
+                <option value="weekly">1周</option>
+                <option value="monthly">1月</option>
+                <option value="yearly">1年</option>
+                <option value="decade">10年</option>
+              </select>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div id="chart-message" class="chart-message hidden"></div>
+            <canvas id="balanceChart"></canvas>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <a href="https://odin.fun?r=tiyxxyehrg" target="_blank" rel="noopener noreferrer" id="relink">
+          打开 ODIN.FUN
+        </a>
+      </footer>
 
-<body>
-  <div class="browser-warning">
-    ⚠️ If this page appears broken, try reloading. If the problem persists, try switching browsers; Chrome or
-    Firefox are recommended.
-  </div>
-  <div id="root"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
+      
 
+      <div class="donation-container">
+        <h3 class="donation-title">
+          捐点钱给网站充 Gas 吧朋友们<br>
+          Donate some money to top-up cycles, friends!
+        </h3>
+        <div class="donation-addresses">
+          <div class="address-item">
+            <span class="address-label">ICP Account:</span>
+            <span class="address-value" data-copy="e810835235cd77fa904e8545906b40397aed1444b61c59a0c15b02ad86acf357">
+              e810835235cd77fa904e8545906b40397aed1444b61c59a0c15b02ad86acf357
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('e810835235cd77fa904e8545906b40397aed1444b61c59a0c15b02ad86acf357', this)">复制</button>
+          </div>
+          <div class="address-item">
+            <span class="address-label">ICP Principal:</span>
+            <span class="address-value" data-copy="2ty2s-7l7hy-bip6m-6uopk-aijjn-ltbnz-o4imj-7ctxz-26czl-sykgp-oqe">
+              2ty2s-7l7hy-bip6m-6uopk-aijjn-ltbnz-o4imj-7ctxz-26czl-sykgp-oqe
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('2ty2s-7l7hy-bip6m-6uopk-aijjn-ltbnz-o4imj-7ctxz-26czl-sykgp-oqe', this)">复制</button>
+          </div>
+          <div class="address-item">
+            <span class="address-label">Bitcoin:</span>
+            <span class="address-value" data-copy="bc1p08ley6599qqdhc8pkvc9z3vnzzm5nz9xlyegnk0dv0pte075764s2x8whf">
+              bc1p08ley6599qqdhc8pkvc9z3vnzzm5nz9xlyegnk0dv0pte075764s2x8whf
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('bc1p08ley6599qqdhc8pkvc9z3vnzzm5nz9xlyegnk0dv0pte075764s2x8whf', this)">复制</button>
+          </div>
+          <div class="address-item">
+            <span class="address-label">ERC20:</span>
+            <span class="address-value" data-copy="0x0ce19e6af92621ad8c8a4d4ba16aaca383e724cb">
+              0x0ce19e6af92621ad8c8a4d4ba16aaca383e724cb
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('0x0ce19e6af92621ad8c8a4d4ba16aaca383e724cb', this)">复制</button>
+          </div>
+          <div class="address-item">
+            <span class="address-label">TRC20:</span>
+            <span class="address-value" data-copy="TBkmpr8iFPs43n9Pu3gx7Eg87KN5gWvvyR">
+              TBkmpr8iFPs43n9Pu3gx7Eg87KN5gWvvyR
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('TBkmpr8iFPs43n9Pu3gx7Eg87KN5gWvvyR', this)">复制</button>
+          </div>
+          <div class="address-item">
+            <span class="address-label">SOL:</span>
+            <span class="address-value" data-copy="BKAJeDA4gXnLyZH7ExCev6AVARGcnro22gP17iAgGEtM">
+              BKAJeDA4gXnLyZH7ExCev6AVARGcnro22gP17iAgGEtM
+            </span>
+            <button class="copy-btn" onclick="copyToClipboard('BKAJeDA4gXnLyZH7ExCev6AVARGcnro22gP17iAgGEtM', this)">复制</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    
+
+
+
+  
+
+
+    <script>
+      function copyToClipboard(text, button) {
+        navigator.clipboard.writeText(text).then(() => {
+          button.classList.add('copied');
+          button.textContent = '已复制';
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.textContent = '复制';
+          }, 2000);
+        }).catch(err => {
+          console.error('复制失败:', err);
+        });
+      }
+    </script>
+
+
+
+
+
+
+
+    <!-- 消息按钮和窗口 -->
+    <button class="message-btn" id="message-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+      </svg>
+    </button>
+    <div class="message-modal" id="message-modal">
+      <button class="close-btn" id="close-message-btn">×</button>
+      <div class="message-list" id="message-list"></div>
+      <div class="message-input-container">
+        <input type="text" class="message-input" id="message-input" placeholder="输入消息..." />
+        <button class="send-btn" id="send-message-btn">发送</button>
+      </div>
+    </div>
+
+    <!-- 脚本加载 -->
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/chart.js"></script>
+    <script type="module" src="/src/message.js"></script>
+  </body>
 </html>

@@ -1,19 +1,18 @@
 [
-    {
-        "match": "**/*",
-
-        // Provides a base set of security headers that will work for most dapps.
-        // Any headers you manually specify will override the headers provided by the policy.
-        // See 'dfx info security-policy' to see the policy and for advice on how to harden the headers.
-        // Once you improved the headers for your dapp, set the security policy to "hardened" to disable the warning.
-        // Options are: "hardened" | "standard" | "disabled".
-        "security_policy": "standard",
-
-        // Uncomment to disable the warning about using the
-        // standard security policy, if you understand the risk
-        // "disable_security_policy_warning": true,
-
-        // Uncomment to redirect all requests from .raw.icp0.io to .icp0.io
-        // "allow_raw_access": false
-    },
+  {
+    "match": ".*",
+    "headers": {
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net 'sha256-VmvJy6qizxRDMRkZJ1ZpmyHCaxtI8XJ+1xDzla053Pk=' 'sha256-<json-ld-hash>' style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://ovv2h-qyaaa-aaaak-ae5zq-cai.icp0.io; connect-src 'self' https://api.odin.fun https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "same-origin"
+    }
+  },
+  {
+    "match": ".*\\.css",
+    "headers": {
+      "Content-Type": "text/css"
+    }
+  }
 ]

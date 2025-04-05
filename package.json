@@ -14,5 +14,9 @@
   "type": "module",
   "workspaces": [
     "src/dashboard_test_frontend"
-  ]
+  ],
+  "dependencies": {
+    "chart.js": "^4.4.8",
+    "chartjs-adapter-date-fns": "^3.0.0"
+  }
 }

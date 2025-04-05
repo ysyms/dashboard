@@ -1,0 +1,73 @@
+/* 确保 body 充满视口并垂直居中内容 */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5; /* 浅灰背景 */
+    position: relative; /* 为定位子元素提供参考 */
+  }
+  
+  /* p 元素的样式 */
+  p {
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(16px, 2.5vw, 24px); /* 自适应字体大小 */
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea, #764ba2); /* 紫蓝渐变 */
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 阴影 */
+    text-align: center; /* 文字居中 */
+    max-width: 90%; /* 限制最大宽度 */
+    display: inline-block;
+    transition: all 0.3s ease; /* 平滑过渡 */
+  }
+  
+  /* span 样式 */
+  #balance {
+    font-weight: bold;
+    color: #ffd700; /* 金色高亮 */
+    animation: fadeIn 1s ease-in; /* 淡入动画 */
+  }
+  
+  /* 鼠标悬停效果 */
+  p:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 增强阴影 */
+    transform: scale(1.02); /* 轻微放大 */
+  }
+  
+  /* 动画定义 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* 刷新时间样式（左下角小字） */
+  .refresh-time {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px; /* 小字 */
+    color: #666; /* 灰色 */
+  }
+  
+  /* Twitter 图标样式（右下角） */
+  .twitter-link {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease; /* 悬停放大效果 */
+  }
+  
+  .twitter-link:hover {
+    transform: scale(1.1); /* 鼠标悬停时放大 */
+  }

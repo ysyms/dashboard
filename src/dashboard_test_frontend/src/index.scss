@@ -1,41 +1,558 @@
+/* 全局样式 */
 body {
-  font-family: sans-serif;
-  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-img {
-  max-width: 50vw;
-  max-height: 25vw;
-  display: block;
-  margin: auto;
+/* 容器样式 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px; /* 添加轻微的内边距，避免内容紧贴边缘 */
 }
 
-form {
+main {
   display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Twitter 头部样式 */
+.twitter-header {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.twitter-link {
+  display: inline-block;
+}
+
+.twitter-icon {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease-out;
+}
+
+.twitter-link:hover .twitter-icon {
+  transform: translateY(5px) scale(1.02);
+  transition: transform 0.2s ease-in;
+}
+
+/* 历史记录部分样式 */
+.history-section {
+  display: block;
+  text-align: center;
+  padding: 30px 10px 10px;
+  width: 80%;
+  margin: 20px auto 0;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
+              0 4px 6px rgba(0, 0, 0, 0.05),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  max-width: 1200px;
+}
+
+.history-section:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15),
+              0 6px 8px rgba(0, 0, 0, 0.1),
+              inset 0 -4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 余额头部样式 */
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.balance-header h2 {
+  font-size: 1.8em;
+  margin: 0;
+  color: #333;
+  flex-grow: 1;
+}
+
+#current-balance, #symbol {
+  color: #34c759;
+  font-weight: bold;
+}
+
+/* 下拉菜单样式 */
+#period-select {
+  padding: 5px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  color: #767676;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
+              0 4px 6px rgba(0, 0, 0, 0.05),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  appearance: menulist;
+  animation: glow 2s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(52, 199, 89, 0.3),
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(52, 199, 89, 0.8),
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(52, 199, 89, 0.3),
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+#period-select option {
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  color: #333;
+}
+
+/* 图表容器样式 */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.chart-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #666;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 刷新链接样式 */
+#relink {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
+              0 4px 6px rgba(0, 0, 0, 0.05),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+}
+
+#relink:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15),
+              0 6px 8px rgba(0, 0, 0, 0.1),
+              inset 0 -4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 消息按钮样式 */
+.message-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #e3fffa, #dee1ff);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 0.5em;
-  flex-flow: row wrap;
-  max-width: 40vw;
-  margin: auto;
-  align-items: baseline;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-button[type="submit"] {
-  padding: 5px 20px;
-  margin: 10px auto;
-  float: right;
+.message-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-#greeting {
-  margin: 10px auto;
-  padding: 10px 60px;
-  border: 1px solid #222;
+.message-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #333;
 }
 
-#greeting:empty {
+/* 消息窗口样式 */
+.message-modal {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(211, 211, 211, 0.9);
+  z-index: 2000;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.browser-warning {
-  display: none;
+.message-modal.open {
+  display: flex;
+}
+
+/* 关闭按钮样式 */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #ff4444;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.close-btn:hover {
+  background: #cc0000;
+}
+
+/* 消息列表样式 */
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  padding: 20px 20px 0;
+  color: white;
+}
+
+/* 消息项样式 */
+.message-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  color: #333;
+}
+
+.message-item .username {
+  font-weight: 700;
+  color: #34c759;
+  margin-bottom: 5px;
+}
+
+.message-item .content {
+  font-size: 1em;
+  color: #666;
+  word-break: break-word;
+}
+
+.message-item .timestamp {
+  font-size: 0.75em;
+  color: #999;
+  margin-top: 5px;
+  align-self: flex-end;
+}
+
+/* 输入栏样式 */
+.message-input-container {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  background: #fff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: 'Poppins', sans-serif;
+}
+
+.send-btn {
+  padding: 10px 20px;
+  background: #34c759;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease;
+}
+
+.send-btn:hover {
+  background: #2ba84a;
+}
+
+/* 捐款容器样式 */
+.donation-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 30px 10px 10px;
+  background: linear-gradient(135deg, #e3fffa, #dee1ff);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
+              0 4px 6px rgba(0, 0, 0, 0.05),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+}
+
+.donation-container:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15),
+              0 6px 8px rgba(0, 0, 0, 0.1),
+              inset 0 -4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 捐款标题样式 */
+.donation-title {
+  text-align: center;
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* 地址列表样式 */
+.donation-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 单个地址项样式 */
+.address-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.address-item:hover {
+  transform: translateY(-2px);
+}
+
+/* 地址标签样式 */
+.address-label {
+  font-weight: bold;
+  color: #34c759;
+  min-width: 120px;
+}
+
+/* 地址值样式 */
+.address-value {
+  flex: 1;
+  font-family: monospace;
+  color: #666;
+  word-break: break-all;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.address-value:hover {
+  color: #34c759;
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+  padding: 5px 10px;
+  background: #34c759;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #2ba84a;
+  transform: scale(1.05);
+}
+
+.copy-btn.copied {
+  background: #767676;
+}
+
+/* 页脚样式 */
+footer {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .container {
+    padding: 5px;
+    max-width: 100%;
+  }
+
+  main {
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  section {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .twitter-header {
+    padding-top: 20px;
+  }
+
+  .twitter-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .history-section,
+  #relink,
+  .donation-container {
+    width: 90%;
+    max-width: 100%;
+    margin: 10px auto 0;
+    padding: 20px 10px 5px;
+    border-radius: 10px;
+  }
+
+  .balance-header {
+    margin-bottom: 15px;
+  }
+
+  .balance-header h2 {
+    font-size: 1em;
+  }
+
+  #current-balance, #symbol {
+    font-size: 1em;
+  }
+
+  .chart-container {
+    height: 350px;
+    margin: 10px 5px;
+  }
+
+  .chart-message {
+    font-size: 1em;
+  }
+
+  .message-btn {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .message-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .message-modal {
+    padding: 15px;
+  }
+
+  .message-list {
+    padding: 15px 15px 0;
+    max-height: calc(100vh - 120px);
+  }
+
+  .message-input-container {
+    padding: 15px;
+  }
+
+  .message-input {
+    padding: 8px;
+  }
+
+  .send-btn {
+    padding: 8px 15px;
+  }
+
+  .close-btn {
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+
+  .donation-title {
+    font-size: 1em;
+  }
+
+  .address-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .address-label {
+    min-width: auto;
+  }
+
+  .address-value {
+    font-size: 0.9em;
+  }
+
+  .copy-btn {
+    align-self: flex-end;
+    padding: 4px 8px;
+    font-size: 0.9em;
+  }
 }
